@@ -1,1 +1,1 @@
-services:  - type: web    name: plant-identifier-api    env: python    buildCommand: ""    startCommand: gunicorn app:app --preload -w 4 -b 0.0.0.0:5000    plan: free    envVars:      - key: FLASK_ENV        value: production    healthCheckPath: /
+services:  - type: web    name: plant-identifier-api    env: python    buildCommand: ""    startCommand: gunicorn app:app --preload -w 4 -b 0.0.0.0:$PORT    plan: free    envVars:      - key: FLASK_ENV        value: production    healthCheckPath: /
