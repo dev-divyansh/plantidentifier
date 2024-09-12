@@ -6,6 +6,11 @@ import os
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads/'
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB max file size
+
+# Ensure the upload folder exists
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
 
 # Loading the model and feature extractor
 model_name = "Sheetalavi/SHITAL_Leaf_Identification"
@@ -62,6 +67,3 @@ def api_predict():
     # Get the prediction
     prediction = predict_image(file_path)
     return jsonify({"prediction": prediction, "image_url": url_for('static', filename='uploads/' + file.filename)})
-
-if __name__ == '__main__':
-    app.run(debug=True)
