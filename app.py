@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from PIL import Image
 import torch
+from flask_cors import CORS
 from transformers import AutoModelForImageClassification, AutoFeatureExtractor
 import os
 
