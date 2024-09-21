@@ -5,6 +5,7 @@ from transformers import AutoModelForImageClassification, AutoFeatureExtractor
 import os
 
 app = Flask(__name__)
+CORS(app)
 app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB max file size
 
